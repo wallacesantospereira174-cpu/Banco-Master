@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Master - Dashboard Fluido</title>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LAYOUT PRINCIPAL: Usa flex-wrap. Se a tela for pequena, a barra lateral e o conteúdo se empilham sozinho -->
+    <div class="layout-flex-app-total">
+        
+        <!-- BARRA LATERAL (Usa flex de tamanho fixo para não esmagar) -->
+        <aside class="layout-flex-barra-lateral">
+            <div class="container-flex-logo-banco">
+                <div class="elemento-avatar-logo-bm">BM</div>
+                <div class="container-texto-logo">
+                    <h2 class="texto-titulo-banco">Banco Master</h2>
+                    <p class="texto-subtitulo-banco">Digital · Seguro</p>
+                </div>
+            </div>
+
+            <nav class="container-flex-links-menu">
+                <a href="#" class="link-menu-item item-ativo"><i class="fa-solid fa-house"></i> Início</a>
+                <a href="#" class="link-menu-item"><i class="fa-solid fa-file-invoice-dollar"></i> Extrato</a>
+                <a href="#" class="link-menu-item"><i class="fa-solid fa-chart-simple"></i> Análise</a>
+                <a href="#" class="link-menu-item"><i class="fa-solid fa-credit-card"></i> Cartões</a>
+            </nav>
+
+            <div class="container-flex-rodape-lateral">
+                <a href="#" class="link-configuracoes"><i class="fa-solid fa-gear"></i> Configurações</a>
+                <div class="container-flex-card-usuario">
+                    <div class="elemento-avatar-foto-usuario">MA</div>
+                    <div class="container-texto-usuario">
+                        <h4 class="texto-nome-usuario">Wallace</h4>
+                        <p class="texto-tipo-conta">Conta Corrente</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL (Ganha flex-grow para ocupar todo o resto do espaço visível) -->
+        <main class="layout-flex-conteudo-principal">
+            
+            <header class="container-bloco-boas-vindas">
+                <p class="texto-saudacao">Boa noitea,</p>
+                <h1 class="texto-titulo-usuario">Wallace</h1>
+            </header>
+
+            <!-- CARD DE SALDO -->
+            <section class="card-flex-saldo-principal">
+                <div class="container-flex-dados-da-conta">
+                    <span class="texto-numero-conta">AG. 0001 · C/C 47.291-8</span>
+                    <button class="botao-esconder-saldo"><i class="fa-solid fa-eye-slash"></i></button>
+                </div>
+                <div class="container-bloco-valor-disponivel">
+                    <p class="texto-rotulo-saldo">Saldo disponível</p>
+                    <h2 class="texto-dinheiro-valor">R$ 12.847,63</h2>
+                </div>
+                <div class="container-flex-resumo-fluxo">
+                    <div class="elemento-flex-fluxo-item fluxo-entrada">
+                        <div class="sub-elemento-icone-seta-entrada"><i class="fa-solid fa-arrow-down-left"></i></div>
+                        <div>
+                            <span class="texto-rotulo-fluxo">Entradas</span>
+                            <p class="texto-valor-fluxo">R$ 6.650,00</p>
+                        </div>
+                    </div>
+                    <div class="elemento-flex-fluxo-item fluxo-saida">
+                        <div class="sub-elemento-icone-seta-saida"><i class="fa-solid fa-arrow-up-right"></i></div>
+                        <div>
+                            <span class="texto-rotulo-fluxo">Saídas</span>
+                            <p class="texto-valor-fluxo">R$ 4.266,90</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO DE BOTÕES (Mágica com GRID automático) -->
+            <section class="layout-grid-botoes-acoes">
+                <button class="botao-flex-acao-rapida">
+                    <i class="fa-solid fa-paper-plane icone-cor-azul"></i>
+                    <span class="texto-nome-acao">Transferir</span>
+                </button>
+                <button class="botao-flex-acao-rapida">
+                    <i class="fa-solid fa-qrcode icone-cor-verde"></i>
+                    <span class="texto-nome-acao">Pix</span>
+                </button>
+                <button class="botao-flex-acao-rapida">
+                    <i class="fa-solid fa-barcode icone-cor-laranja"></i>
+                    <span class="texto-nome-acao">Pagar</span>
+                </button>
+                <button class="botao-flex-acao-rapida">
+                    <i class="fa-solid fa-plus icone-cor-roxa"></i>
+                    <span class="texto-nome-acao">Depositar</span>
+                </button>
+            </section>
+
+            <!-- SEÇÃO DE MÉTRICAS (Mágica com GRID automático) -->
+            <section class="layout-grid-metricas-mensais">
+                <div class="card-bloco-metrica-individual">
+                    <span class="texto-rotulo-metrica">Entradas em ago</span>
+                    <h3 class="texto-valor-metrica metrica-positiva">+R$ 6.650</h3>
+                    <p class="texto-porcentagem-comparativa cor-texto-verde"><i class="fa-solid fa-arrow-up"></i> 7,2% vs jul</p>
+                </div>
+                <div class="card-bloco-metrica-individual">
+                    <span class="texto-rotulo-metrica">Saídas em ago</span>
+                    <h3 class="texto-valor-metrica metrica-negativa">-R$ 4.267</h3>
+                    <p class="texto-porcentagem-comparativa cor-texto-vermelha"><i class="fa-solid fa-arrow-up"></i> +10,6% vs jul</p>
+                </div>
+                <div class="card-bloco-metrica-individual">
+                    <span class="texto-rotulo-metrica">Economizado</span>
+                    <h3 class="texto-valor-metrica metrica-alerta">R$ 2.383</h3>
+                    <p class="texto-porcentagem-comparativa cor-texto-cinza">35,8% da receita</p>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+</body>
+</html>

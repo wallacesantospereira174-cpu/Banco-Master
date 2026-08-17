@@ -1,0 +1,263 @@
+/* ==========================================================================
+   1. RESET GLOBAL E REGRAS DE PREVENÇÃO DE QUEBRA
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #030a1c;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. ESTRUTURA SEM MEDIA QUERIES (A mágica da auto-responsividade)
+   ========================================================================== */
+
+/* FLEXBOX FLUIDO: O 'flex-wrap: wrap' faz com que se a tela for menor que a 
+   soma da barra lateral (280px) + conteúdo principal, eles se empilhem automaticamente! */
+.layout-flex-app-total {
+    display: flex;
+    flex-wrap: wrap; 
+    min-height: 100vh;
+}
+
+/* FLEXBOX E TAMANHO FIXO: A barra tem base de 280px e cresce ('flex-grow: 1') 
+   se virar topo no celular, espalhando o menu */
+.layout-flex-barra-lateral {
+    background-color: #071126;
+    flex: 1 1 280px; /* Cresce, encolhe e tem base de 280px */
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border-right: 1px solid #142340;
+}
+
+/* FLEXBOX DINÂMICO: Ocupa o máximo de espaço horizontal disponível (flex: 10000 para dominar)
+   mas tem uma base mínima segura de 320px para celulares pequenos */
+.layout-flex-conteudo-principal {
+    flex: 1000 1 320px; 
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* GRID AUTOMÁTICO PARA BOTÕES: O 'auto-fit' cria quantas colunas couberem 
+   com tamanho mínimo de 140px. Se a tela diminuir, vira 2x2 ou 1x4 sozinho! */
+.layout-grid-botoes-acoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+/* GRID AUTOMÁTICO PARA MÉTRICAS: Mesma lógica, cada card precisa de pelo menos 
+   240px de largura. Se não couber um ao lado do outro, cai para a linha de baixo. */
+.layout-grid-metricas-mensais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+
+/* ==========================================================================
+   3. ESTILOS DE COMPONENTES INTERNOS (Alinhamentos padrão)
+   ========================================================================== */
+
+.container-flex-logo-banco {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.elemento-avatar-logo-bm {
+    background-color: #1a5cff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.texto-titulo-banco { font-size: 16px; }
+.texto-subtitulo-banco { font-size: 12px; color: #6c7d93; }
+
+/* FLEXBOX: Menu também usa wrap para se ajustar caso a barra lateral vire topo */
+.container-flex-links-menu {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+}
+
+.link-menu-item {
+    color: #8fa0b5;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.link-menu-item:hover, .item-ativo {
+    background-color: #112240;
+    color: #1a5cff;
+}
+
+.container-flex-rodape-lateral {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.link-configuracoes {
+    color: #8fa0b5;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.container-flex-card-usuario {
+    background-color: #0b1a36;
+    border: 1px solid #142340;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.elemento-avatar-foto-usuario {
+    background-color: #f39c12;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.texto-nome-usuario { font-size: 13px; }
+.texto-tipo-conta { font-size: 11px; color: #6c7d93; }
+
+/* CARD DE SALDO */
+.container-bloco-boas-vindas .texto-saudacao { color: #8fa0b5; }
+.container-bloco-boas-vindas .texto-titulo-usuario { font-size: 24px; font-weight: 600; }
+
+.card-flex-saldo-principal {
+    background: linear-gradient(135deg, #0b1a36 0%, #061229 100%);
+    border: 1px solid #142340;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-flex-dados-da-conta {
+    display: flex;
+    justify-content: space-between;
+    color: #526685;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.botao-esconder-saldo {
+    background: none;
+    border: none;
+    color: #526685;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.container-bloco-valor-disponivel .texto-rotulo-saldo { color: #8fa0b5; font-size: 14px; margin-bottom: 4px; }
+.container-bloco-valor-disponivel .texto-dinheiro-valor { font-size: 36px; font-weight: bold; }
+
+/* FLEXBOX COM QUEBRA DE LINHA: Se a tela for muito estreita, as saídas caem para baixo das entradas */
+.container-flex-resumo-fluxo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    border-top: 1px solid #142340;
+    padding-top: 16px;
+}
+
+.elemento-flex-fluxo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.texto-rotulo-fluxo { font-size: 12px; color: #8fa0b5; }
+.texto-valor-fluxo { font-size: 15px; font-weight: 600; }
+
+.sub-elemento-icone-seta-entrada, .sub-elemento-icone-seta-saida {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.fluxo-entrada .sub-elemento-icone-seta-entrada { background-color: rgba(46, 204, 113, 0.1); color: #2ecc71; }
+.fluxo-saida .sub-elemento-icone-seta-saida { background-color: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+
+/* BOTÕES DE AÇÃO */
+.botao-flex-acao-rapida {
+    background-color: #0b1a36;
+    border: 1px solid #142340;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #8fa0b5;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-flex-acao-rapida:hover { background-color: #112240; border-color: #1a5cff; }
+.botao-flex-acao-rapida i { font-size: 20px; }
+
+.icone-cor-azul { color: #3498db; }
+.icone-cor-verde { color: #2ecc71; }
+.icone-cor-laranja { color: #f39c12; }
+.icone-cor-roxa { color: #9b59b6; }
+
+/* CARDS DE MÉTRICAS */
+.card-bloco-metrica-individual {
+    background-color: #0b1a36;
+    border: 1px solid #142340;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.texto-rotulo-metrica { font-size: 12px; color: #6c7d93; }
+.texto-valor-metrica { font-size: 20px; margin: 6px 0; }
+.texto-porcentagem-comparativa { font-size: 12px; }
+
+.metrica-positiva, .cor-texto-verde { color: #2ecc71; }
+.metrica-negativa, .cor-texto-vermelha { color: #e74c3c; }
+.metrica-alerta, .cor-texto-laranja { color: #f39c12; }
+.cor-texto-cinza { color: #526685; }
