@@ -261,3 +261,18 @@ body {
 .metrica-negativa, .cor-texto-vermelha { color: #e74c3c; }
 .metrica-alerta, .cor-texto-laranja { color: #f39c12; }
 .cor-texto-cinza { color: #526685; }
+
+#btn-click{
+    border-radius: 5px;
+    border: none;
+    background-color: #1a5cff;
+    color: #ffffff;
+    position: static;
+    right: none;
+}
+
+#btn-click:hover{
+   background-color: #6c7d93;
+}
+
+
